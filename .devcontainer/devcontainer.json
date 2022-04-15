@@ -1,6 +1,6 @@
 {
 	"name": "Python Sample",
-	"dockerFile": "Dockerfile",
+	"dockerFile": "../Dockerfile",
 	"extensions": [
 		"ms-python.python"
 	],
