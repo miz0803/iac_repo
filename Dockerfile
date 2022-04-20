@@ -1,11 +1,13 @@
-FROM python:3.8
+# ベースイメージの選択
+FROM python:3.10
+# コンテナ内実行ユーザーの指定
+USER root
 
-RUN mkdir -p /code
-## Dockerfileやdocker-compose.ymlを使う時、COPYコマンドは現在のコンテキスト(たぶんDoclerfileが置いてあるところ)より上の階層を見ることができない
-## そのため.devcontainerディレクトリ内にDockerfileを置くと、リポジトリ直下にあるrequirements.txtを見れずにエラーになる
-## .devcontainerディレクトリ内にDockerfile置いていたからエラーが出ていたため、Dockerfileをリポジトリ直下に移動し、jsonの方のパスに../と指定した
-## devcontainer.jsonはVSC用のファイルだから階層とか関係なさそう。dockerFileプロパティのパスで[../]を使ってもビルドが通る
-## だからたぶんDockerfileとかdocker-compose.ymlはリポジトリ直下においたほうが全階層見れるので良いはず。
-COPY requirements.txt /code
-WORKDIR /code
+# 環境変数
+ENV PYTHONUNBUFFERED 1
+
+# ベースイメージに対してコマンドを実行
+COPY requirements.txt /
 RUN pip install -r requirements.txt
+RUN mkdir -p /root/src
+WORKDIR /root/src

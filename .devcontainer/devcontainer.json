@@ -1,7 +1,0 @@
-{
-	"name": "Python Sample",
-	"dockerFile": "../Dockerfile",
-	"extensions": [
-		"ms-python.python"
-	],
-}
