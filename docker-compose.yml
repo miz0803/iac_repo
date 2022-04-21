@@ -1,0 +1,24 @@
+version: '2.4'
+servives:
+  application: 
+    image: python:3
+hayashizakimizuki@hayashizakinobukonoMacBook-Pro docker % cat cat docker-compose.yml2
+cat: cat: No such file or directory
+version: '2'
+servives:
+  application: 
+    image: python:3
+    restart: always
+  database:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      PGDATABASE: postgres_db
+      PGUSER: postgres_user
+  web:
+    image: httpd:latest
+    restart: always
+    port: 8087:80
+  another:
+    image: centos:latest
